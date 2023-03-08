@@ -165,9 +165,9 @@ class RedisClient
 
         # As redirection node_key is dependent on `cluster-preferred-endpoint-type` config,
         # node_key should use hostname if present in CLUSTER NODES output.
-        # See https://redis.io/commands/cluster-nodes/ for details on the output format.
         #
-        # @param [String] Address info matching fhe format: <ip:port@cport[,hostname[,auxiliary_field=value]*]>
+        # See https://redis.io/commands/cluster-nodes/ for details on the output format.
+        # node_address matches fhe format: <ip:port@cport[,hostname[,auxiliary_field=value]*]>
         def parse_node_key(node_address)
           ip_chunk, hostname, _auxiliaries = node_address.split(',')
           ip_port_string = ip_chunk.split('@').first
