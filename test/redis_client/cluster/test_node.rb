@@ -20,6 +20,7 @@ class RedisClient
       end
     end
 
+    # rubocop:disable Metrics/ClassLength
     class TestNode < TestingWrapper
       def setup
         @test_config = ::RedisClient::ClusterConfig.new(
@@ -608,5 +609,6 @@ class RedisClient
         end
       end
     end
+    # rubocop:enable Metrics/ClassLength
   end
 end
