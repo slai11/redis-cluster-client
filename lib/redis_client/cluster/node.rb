@@ -171,7 +171,7 @@ class RedisClient
         def parse_node_key(node_address)
           ip_chunk, hostname, _auxiliaries = node_address.split(',')
           ip_port_string = ip_chunk.split('@').first
-          return ip_port_string if hostname.nil? || hostname.size() == 0
+          return ip_port_string if hostname.nil? || hostname.empty?
 
           port = ip_port_string.split(':')[1]
           "#{hostname}:#{port}"
