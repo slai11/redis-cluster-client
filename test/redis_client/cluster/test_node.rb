@@ -180,7 +180,7 @@ class RedisClient
         assert_equal(want, got.map(&:to_h))
       end
 
-      def test_parse_cluster_node_reply_hostname
+      def test_parse_cluster_node_reply_with_hostname
         info = <<~INFO
           07c37dfeb235213a872192d90877d0cd55635b91 127.0.0.1:30004@31004,localhost slave e7d1eecce10fd6bb5eb35b9f99a514335d9ba9ca 0 1426238317239 4 connected
           67ed2db8d677e59ec4a4cefb06858cf2a1a89fa1 127.0.0.1:30002@31002,localhost master - 0 1426238316232 2 connected 5461-10922
@@ -214,7 +214,7 @@ class RedisClient
         assert_equal(want, got.map(&:to_h))
       end
 
-      def test_parse_cluster_node_reply_hostname_with_auxiliaries
+      def test_parse_cluster_node_reply_with_hostname_and_auxiliaries
         info = <<~INFO
           07c37dfeb235213a872192d90877d0cd55635b91 127.0.0.1:30004@31004,localhost,shard-id=69bc080733d1355567173199cff4a6a039a2f024 slave e7d1eecce10fd6bb5eb35b9f99a514335d9ba9ca 0 1426238317239 4 connected
           67ed2db8d677e59ec4a4cefb06858cf2a1a89fa1 127.0.0.1:30002@31002,localhost,shard-id=114f6674a35b84949fe567f5dfd41415ee776261 master - 0 1426238316232 2 connected 5461-10922
@@ -248,7 +248,7 @@ class RedisClient
         assert_equal(want, got.map(&:to_h))
       end
 
-      def test_parse_cluster_node_reply_with_auxiliaries_without_hostname
+      def test_parse_cluster_node_reply_with_auxiliaries
         info = <<~INFO
           07c37dfeb235213a872192d90877d0cd55635b91 127.0.0.1:30004@31004,,shard-id=69bc080733d1355567173199cff4a6a039a2f024 slave e7d1eecce10fd6bb5eb35b9f99a514335d9ba9ca 0 1426238317239 4 connected
           67ed2db8d677e59ec4a4cefb06858cf2a1a89fa1 127.0.0.1:30002@31002,,shard-id=114f6674a35b84949fe567f5dfd41415ee776261 master - 0 1426238316232 2 connected 5461-10922
